@@ -1,88 +1,143 @@
+{% load static from staticfiles %}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Travels Dashboard</title>
-
-    <style>
-
-        body{
-            text-align: right;
-            padding: 3rem;
-        }   
-
-        .wrapper{
-            width: 90%;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        section{
-            margin: 2rem 0;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'styles/home-style.css'%}">
+    <script src="https://kit.fontawesome.com/7e3e6f27d8.js" crossorigin="anonymous"></script>
+ 
+    <title>Travel Buddy</title>
 </head>
 <body>
-    <a href="/logout">Logout</a>
-    <div class="wrapper">
-        <h1 class="display-4">Hello, {{user.name}}!</h1>
-        <section>
-            <h2>Your Trip Schedules</h2>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Destination</th>
-                        <th scope="col">Travel Start Date</th>
-                        <th scope="col">Travel End Date</th>
-                        <th scope="col">Plan</th>
-                    </tr>
-                </thead>
-                <tbody>
-    
-                    {% for trip in users_trips %}
-                    <tr>
-                        <td><a href="/view_trip/{{trip.id}}">{{trip.destination}}</a></td>
-                        <td>{{trip.travel_date_from}}</td>
-                        <td>{{trip.travel_date_to}}</td>
-                        <td>{{trip.desc}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </section>
-
-        <section>
-            <h2>Other User's Travel Plans</h2>
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Destination</th>
-                        <th scope="col">Travel Start Date</th>
-                        <th scope="col">Travvel End Date</th>
-                        <th scope="col">Do You Want to Join?</th>
-                    </tr>
-                </thead>
-                <tbody>
-    
-                    {% for trip in all_trips %}
- 
-                    <tr>
-                        <td>{{trip.creator.name}}</td>
-                        <td><a href="/view_trip/{{trip.id}}">{{trip.destination}}</a></td>
-                        <td>{{trip.travel_date_from}}</td>
-                        <td>{{trip.travel_date_to}}</td>
-                        <td><a href="/join_trip/{{trip.id}}">Join</a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </section>
+    <div class="home">
+        <div class="container">
+            <img src="/static/img/logo-final.svg" alt="logo" class="logo">
+            {% if logged_in %}
+                <nav>
+                    <ul>
+                        <li><a href="/logout" class="logout">Logout</a></li>
+                    </ul>
+                </nav>
+                    <div class="heading">
+                        <h1>Welcome, {{user.name}}</h1>
+                    </div>
+                    <h2 class="sub-heading">Start your journey</h2>
+                    <div class="arrow">
+                        <a href="#journey"><i class="fas fa-arrow-down"></i></a>
+                    </div>
+                </div>
+            {% else %}    
+                <nav>
+                    <ul>
+                        <li><a href="/signup">Join</a></li>
+                        <li><a href="/signup">Login</a></li>
+                    </ul>
+                </nav>
+                <div class="home-text">
+                    <div>
+                        <div class="heading">
+                            <h1>Plan your trips for Tomorrow, Today</h1>
+                        </div>
+                        <a href="#about"><button class="btn">Learn More</button></a>
+                    </div>
+                </div>
+            {% endif %}
+            <img src="/static/img/left.svg" alt="left" id="left" >
+            <img src="/static/img/right.svg" alt="right" id="right" >
+        </div>
     </div>
-    <a href="/add_travel_plan">Add Travel Plan</a>
-    
+
+    <div class="about" id="about">
+        <h2>About Us</h2>
+        <div class="about-grid">
+            <img src="/static/img/about.jpeg" alt="backpack" id="backpack">
+            <div class="text">
+                <p>Travel Buddy is the right place if you find yourself in need of finding a buddy for 
+                    travel. You can browsw trips until you find the perfect match with a travel companion.
+                </p>
+                <p>No matter how you image your perfect travel buddy, you can always find someone to team 
+                    up with on Travel Buddy. We try to make the experience of finding a travel buddy as 
+                    easy as possible so you can start traveling together in no time!
+                </p>
+            </div>
+        </div>
+
+    </div>
+    {% if logged_in %}
+    {% endif %}
+        <div class="wrapper">
+            <div id="journey" class="your-trips">
+                <!-- <img src="/static/img/campfire.svg" alt="campfire" id="campfire"> -->
+                <div class="trips">
+                    <h1>Your Trips</h1>
+
+                    {% if trip_count > 0 %}
+                        <section class="cards">            
+                            {% for trip in users_trips %}
+                            <div class="card">
+                                <h3>{{trip.destination}}</h3>
+                                <p><span>From:</span> {{trip.travel_date_from}}</p>
+                                <p><span>To:</span> {{trip.travel_date_to}}</p>
+                                <p><span>Description:</span> {{trip.desc}}</p> 
+                                <a href="/view_trip/{{trip.id}}">More Info</a>
+                            </div>
+                            {% endfor %}
+                        </section>
+                    {% else %}
+                        <div class="no-trips">
+                            <i class="far fa-frown"></i>
+                            <p>You do not any trips at the moment</p>
+                        </div>
+                    {% endif %}
+                    {% if logged_in %}
+                        <a href="/add_travel_plan" class="add-btn"><strong>Create Trip</strong></a>
+                    {% else %}
+                        <a href="/signup" class="add-btn"><strong>Join</strong></a>
+                    {% endif %}
+
+                </div>
+            </div>
+            <!-- <img src="/static/img/campfire.svg" alt="campfire" id="campfire"> -->
+            <!-- <div class="right-align">
+                <img src="/static/img/campfire-light.svg" alt="campfire-light" id="campfire_light">
+            </div> -->
+            <div class="trips">
+                <h1>Users Trips</h1>
+                <section class="cards">
+        
+                    {% for trip in all_trips %}
+                    <div class="card">
+                        <h3>{{trip.destination}}</h3>
+                        <p><span>By:</span> {{trip.creator.name}}</p>
+                        <p><span>From:</span> {{trip.travel_date_from}}</p>
+                        <p><span>To:</span> {{trip.travel_date_to}}</p>
+                        {% if logged_in %}
+                            <a href="/view_trip/{{trip.id}}">More info</a>
+                            <a href="/join_trip/{{trip.id}}">Join</a>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                </section>
+            </div>
+        </div>
+
+
+    <footer>
+        <div class="footer-container">
+            <img src="/static/img/logo-final.svg" alt="logo" class="logo-small">
+            <h2>Contact Us</h2>
+            <p>(555)-555-555</p>
+            &nbsp;
+            <p>traveluddy@gmail.com</p>
+            <p class="copyright">© 2020 Travel Buddy | All rights reserved.</p>
+        </div>
+    </footer>
+
+
 </body>
 </html>

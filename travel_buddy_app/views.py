@@ -7,6 +7,14 @@ import bcrypt
 
 # Create your views here.
 def index(request):
+    all_trips = Trip.objects.all()
+
+    context = {
+        "all_trips": all_trips
+    }
+    return render(request, "travels.html", context)
+
+def signup(request):
     return render(request, "index.html")
 
 def register(request, method="POST"):
@@ -17,7 +25,7 @@ def register(request, method="POST"):
         request.session['try'] = "register"
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect("/")
+        return redirect("/signup")
     
     password = request.POST['password']
     hashed_pass = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
@@ -34,7 +42,7 @@ def login(request, method="POST"):
         request.session['try'] = "login"
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect("/")
+        return redirect("/signup")
 
     user = User.objects.filter(username=request.POST['username'])
     current_user = user[0]    
@@ -49,10 +57,17 @@ def travels(request):
 
     all_trips = all_trips.exclude(passengers=current_user)
     
+    length = len(current_user.joined_trips.all())
+    if(length > 0):
+        print('length is greater than 0')
+        print('length is ' + str(length))
+
     context = {
         "user": current_user,
         "users_trips": current_user.joined_trips.all(),
-        "all_trips": all_trips
+        "all_trips": all_trips,
+        "logged_in": True,
+        "trip_count": length
     }
 
     return render(request, "travels.html", context)

@@ -20,46 +20,74 @@
             margin-left: 2rem;
         }
 
-        h1{
-            margin-left: 20%;
+        .container{
+            margin: 0 auto;
+            margin-top: 5%;
+            width: 80%;
         }
 
-        .container{
-            margin-top: 5%;
-            width: 30%;
+        .content {
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .form input, textarea{
             margin-bottom: 1rem;
         }
+
+        .error {
+            color: crimson;
+        }
+
+        @media(max-width: 480px) {
+
+            body{
+                padding: 1rem;
+            }
+
+            header a {
+                margin-left: 1rem;
+            }
+
+            .container{
+                margin-top: 5%;
+                width: 80%;
+            }
+
+            .form input, textarea{
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <a href="/travels">Home</a>
-        <a href="/logout">Logout</a>
+        <a href="/travels" class="text-dark font-weight-bold">Home</a>
+        <a href="/logout" class="text-dark font-weight-bold">Logout</a>
     </header>
     
     <div class="container">
-        <h1 class="display-4">Add a Trip</h1>
-        <ul>
-            {% for message in messages %}
-                <li {% if message.tags%} class="{{message.tags}}" {% endif %}>{{message}}</li>
-            {% endfor %}
-        </ul>
-        
-        <form action="/add_trip" method="post" class="form">
-            {% csrf_token %}
-            <h5>Destination:</h5>
-            <input  class="form-control" type="text" name="destination">
-            <h5>Description:</h5>
-            <textarea class="form-control cols="30" rows="4" name="desc"></textarea>
-            <h5>Start Date:</h5>
-            <input class="form-control" type="date" name="start_date">
-            <h5>End Date:</h5>
-            <input class="form-control" type="date" name="end_date">
-            <button class="btn btn-secondary" type="submit">Add</button>
-        </form>
+        <div class="content">
+            <h1 class="display-4">Add a Trip</h1>
+            <ul>
+                {% for message in messages %}
+                    <li class="error"{% if message.tags%} class="{{message.tags}}" {% endif %}>{{message}}</li>
+                {% endfor %}
+            </ul>
+            
+            <form action="/add_trip" method="post" class="form">
+                {% csrf_token %}
+                <h5>Destination:</h5>
+                <input  class="form-control" type="text" name="destination">
+                <h5>Description:</h5>
+                <textarea class="form-control cols="30" rows="4" name="desc"></textarea>
+                <h5>Start Date:</h5>
+                <input class="form-control" type="date" name="start_date">
+                <h5>End Date:</h5>
+                <input class="form-control" type="date" name="end_date">
+                <button class="btn btn-secondary" type="submit">Add</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

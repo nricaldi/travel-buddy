@@ -8,19 +8,14 @@
     <title>Login/Regisgter</title>
 
     <style>
+
+        body{
+            /* background: #11172B;  */
+            font-family: 'Montserrat', sans-serif;
+        }
+
         .container{
-            margin-top: 5%;
-        }
-
-        .title{
-            margin-top: -3.5rem;
-            background-color: #fff;
-            width: 50%;
-            text-align: center;
-        }
-
-        .title-2{
-            width: 40%;
+            margin-top: 15%;
         }
 
         .register,
@@ -28,8 +23,10 @@
             display: inline-block;
             vertical-align: top;
             width: 45%;
-            border: solid 2px #9c9c9c;
-            padding: 1rem;
+            background: #FFF;
+            padding: 2rem 1rem;
+            text-align: center;
+            /* padding: 4rem; */
         }
 
         .register{
@@ -46,18 +43,78 @@
         }
 
         ul a {
-            color: #dc3545;
+            color: crimson;
         }
 
-        input{
+        input[type="text"],
+        input[type="password"] {
             margin: 1rem 0;
+            text-align: center;
+            /* color: #d1d1d1; */
+            /* border-bottom: solid 1px #373737; */
+            padding: 1.5rem 1rem;
         }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            color: #11172B;
+        }
+
+        .button {
+            color: #FFF;
+            background: #E51937;
+            border: none;
+            font-size: 1.25rem;
+            padding: .5em 2em;
+            border-radius: 1000px; 
+            /* transition: background .5s ease-in-out; */
+        }
+
+        .button:hover,
+        .button:focus{
+            background: #8e1124;
+        }
+
+        @media only screen and (min-width: 1405px) {
+            .container {
+                width: 80%;
+            }
+
+            .button{
+                font-size: 1.25rem;
+            }
+        }
+
+        @media only screen and (max-width: 1005px) {
+            .display-4 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media only screen and (max-width: 770px) {
+
+            .display-4 {
+                font-size: 2.5rem;
+            }
+
+            .register,
+            .login{
+                display: block;
+                width: 100%;
+            }
+
+        }
+
+        @media only screen and (max-width: 650px) {
+
+        }
+        
     </style>
 </head>
 <body>
     <div class="container">
         <div class="register">
-            <div class="title"><h1 class="display-4">Register</h1></div>
+            <h1 class="display-4">Sign Up</h1>
             {% if messages and request.session.try == "register" %}
                 <ul>
                     {% for message in messages %}
@@ -67,16 +124,16 @@
             {% endif %}
             <form action="/register" method="post" class="form">
                 {% csrf_token %}
-                <input type="text" name="name"  class="form-control" placeholder="Name*">
-                <input type="text" name="username" class="form-control" placeholder="Usermame*">
-                <input type="password" name="password" class="form-control" placeholder="Password*">
-                <p> Password should be at least 8 characters*</p>
-                <input type="password" name="confirm" class="form-control" placeholder="Confirm Password*">
-                <button type="submit" class="btn btn-primary">Register</button>
+                <input type="text" name="name"  class="form-control" placeholder="Name">
+                <input type="text" name="username" class="form-control" placeholder="Usermame">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                <input type="password" name="confirm" class="form-control" placeholder="Confirm Password">
+                <!-- <button type="submit" class="btn btn-outline-primary">Register</button> -->
+                <button type="submit" class="button">Register</button>
             </form>
         </div>
         <div class="login">
-            <div class=" title title-2"><h1 class="display-4">Log in</h1></div>
+            <h1 class="display-4">Log in</h1>
             {% if messages and request.session.try == "login" %}
                 <ul>
                     {% for message in messages %}
@@ -88,7 +145,8 @@
                 {% csrf_token %}
                 <input type="text" name="username" class="form-control" placeholder="Username">
                 <input type="password" name="password" class="form-control" placeholder="Password">
-                <button type="submit" class="btn btn-danger">Log in</button>
+                <!-- <button type="submit" class="btn btn-outline-danger">Log in</button> -->
+                <button type="submit" class="button">Log in</button>
             </form>
         </div>
         
