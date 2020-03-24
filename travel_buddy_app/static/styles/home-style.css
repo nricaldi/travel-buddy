@@ -78,7 +78,6 @@ nav li a {
 
 @media(min-width: 1300px) {
     nav li a {
-        /* margin: 3rem 1rem; */
         margin-top: 1rem;
         margin-right: 2rem;
         padding: 1rem 2rem;
@@ -97,10 +96,6 @@ nav a:hover {
 
 .heading {
     margin-bottom: 2rem;
-}
-
-.sub-heading {
-    /* margin-bottom: 2rem; */
 }
 
 .arrow {
@@ -154,13 +149,8 @@ nav a:hover {
 }
 
 @media(min-width: 700px) {
-    .home {
-        /* height: 100vh; */
-    }
-
     .container {
         width: 90%;
-        /* padding: 5% 0; */
     }
 
     .heading {
@@ -237,7 +227,7 @@ nav a:hover {
     margin: 0 auto;
     max-width: 1440px;
     padding: 2rem 0;
-    text-align: center; 
+    text-align: center;
     background: transparent;
 }
 
@@ -379,7 +369,8 @@ footer {
     /* height: 300px; */
     /* background: #e51937;     */
     /* background: #dadada;     */
-    background: #555555;    
+    background: #373737;    
+    color: #fff;
     /* background: linear-gradient(201deg, rgba(229,25,55,1) 0%, rgba(231,35,53,1) 50%, rgba(236,71,47,1) 80%, rgba(251,170,30,1) 100%); */
     /* color: #E51937; */
 }
@@ -388,21 +379,11 @@ footer {
     width: 80%;
     margin: 0 auto;
     max-width: 1440px;
-    padding: 2rem 0;
+    padding: 4rem 0;
     text-align: center; 
-}
-
-.logo-small {
-    width: 100px;
-    margin-bottom: 2rem;
-}
-
-.footer-container h2 {
-    margin-bottom: 1rem;
 }
 
 .copyright {
     color: #fff;
     font-size: .75rem;
-    margin-top: 2rem;
 }

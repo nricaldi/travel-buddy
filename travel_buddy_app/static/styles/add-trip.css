@@ -1,0 +1,146 @@
+* {
+    color: #fff;
+}
+
+body {
+    height: 100vh;
+    /* height: 100%; */
+    font-family: 'Montserrat', sans-serif;
+    /* background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/static/img/add1.jpeg) no-repeat ; */
+    background-position: center;
+    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/static/img/add1.jpeg) no-repeat; 
+    background-size: cover;
+    box-sizing: border-box;
+    padding: 2rem;
+}
+
+@media(max-height: 670px) {
+    body {
+        height: 100%;
+    }
+}
+
+header{
+    text-align: right;
+}
+
+header a {
+    margin-left: 2rem;
+}
+
+.container{
+    margin: 0 auto;
+    margin-top: 5%;
+    width: 80%;
+}
+
+.content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+.form input, textarea{
+    margin-bottom: 1rem;
+}
+
+.error {
+    color: crimson;
+}
+
+@media(max-width: 480px) {
+
+    body{
+        padding: 1rem;
+    }
+
+    header a {
+        margin-left: 1rem;
+    }
+
+    .container{
+        margin-top: 5%;
+        width: 80%;
+    }
+
+    .form input, textarea{
+        margin-bottom: 1rem;
+    }
+}
+
+
+
+
+
+
+input[type="text"],
+input[type="date"],
+textarea {
+    border-color: #fff;
+    background: none !important;
+    color: #fff;
+    margin: 1rem 0;
+    margin-bottom: 1rem !important;
+    padding: 1.5rem 1rem;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder { 
+    color: #FFF;
+    opacity: 1;
+  }
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    background: none;
+    color: #fff;
+}
+
+.button {
+    color: #FFF;
+    /* display: inline-block; */
+    background: #E51937;
+    border: none;
+    font-size: 1.25rem;
+    padding: .5em 2em;
+    border-radius: 1000px; 
+    text-decoration: none;
+    transition: all 500ms ease-in-out;
+}
+
+.button:hover,
+.button:focus{
+    color: #E51937;
+    background: #fff;
+    text-decoration: none;
+}
+
+@media only screen and (min-width: 1405px) {
+    .container {
+        width: 80%;
+    }
+
+    .button{
+        font-size: 1.25rem;
+    }
+}
+
+@media only screen and (max-width: 1005px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .register,
+    .login{
+        display: block;
+        width: 100%;
+    }
+
+}

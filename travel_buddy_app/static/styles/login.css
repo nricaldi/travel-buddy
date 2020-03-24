@@ -1,0 +1,187 @@
+body{
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(/static/img/login1.jpeg) no-repeat ;
+    /* background: url(/static/img/login1.jpeg) no-repeat !important; */
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+
+}
+
+
+.logo{
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 100px;
+    z-index: 1000;
+}
+
+
+nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+nav ul li a {
+    display: inline-block;
+    text-decoration: none !important;
+    color: #FFF;
+    background: #e51937;
+    border-radius: 1000px;
+    padding: .5rem 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all .5s ease-in-out;
+}
+
+nav a:hover {
+    background: #fff;
+    color: #E51937;
+}
+
+
+@media(min-width: 768px) {
+    nav li a{
+        margin: 0 2rem;
+    }
+}
+
+
+@media(min-width: 1300px) {
+    nav li a {
+        margin-top: 1rem;
+        margin-right: 2rem;
+        padding: 1rem 2rem;
+    }
+
+    nav a {
+        background: #E51937;
+    }
+
+}
+
+.container{
+    margin-top: 15%;
+}
+
+.register,
+.login{
+    color: #fff;
+    display: inline-block;
+    vertical-align: top;
+    width: 45%;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.register{
+    margin-right: 9%;
+}
+
+@-webkit-keyframes autofill {
+    0%,100% {
+        color: #fff;
+        background: transparent;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-delay: 1s; /* Safari support - any positive time runs instantly */
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
+
+p{
+    margin-left: 2px;
+}
+
+ul {
+    list-style-type: initial;
+    color: #dc3545;
+}
+
+ul a {
+    color: crimson;
+}
+
+input[type="text"],
+input[type="password"] {
+    border-color: #fff;
+    background: none;
+    color: #fff;
+    margin: 1rem 0;
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder { 
+    color: #FFF;
+    opacity: 1;
+  }
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    background: none;
+    color: #fff;
+}
+
+.button {
+    color: #FFF;
+    background: #E51937;
+    border: none;
+    font-size: 1.25rem;
+    padding: .5em 2em;
+    border-radius: 1000px; 
+    transition: all 500ms ease-in-out;
+}
+
+.button:hover,
+.button:focus{
+    color: #E51937;
+    background: #fff;
+}
+
+@media only screen and (min-width: 1405px) {
+    .container {
+        width: 80%;
+    }
+
+    .button{
+        font-size: 1.25rem;
+    }
+}
+
+@media only screen and (max-width: 1005px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+
+    .display-4 {
+        font-size: 2.5rem;
+    }
+
+    .register,
+    .login{
+        display: block;
+        width: 100%;
+    }
+
+}
