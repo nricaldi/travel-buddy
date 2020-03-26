@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from travel_buddy_app import views
-# from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +30,3 @@ urlpatterns = [
     path('join_trip/<trip_id>', views.join_trip),
     path('logout', views.logout)
 ]
-
-# urlpatterns += staticfiles_urlpatterns()

@@ -44,8 +44,21 @@ header a {
     margin-bottom: 1rem;
 }
 
+ul {
+    list-style-position: outside;
+}
+
 .error {
+    background: rgba(0, 0, 0, 0.194);
+    padding: .5rem;
+    margin-left: -35px;
+    list-style-type: none;
     color: crimson;
+}
+
+i {
+    color: crimson;
+    margin-right: 5px;
 }
 
 @media(max-width: 480px) {
@@ -68,32 +81,29 @@ header a {
     }
 }
 
-
-
-
-
-
 input[type="text"],
 input[type="date"],
 textarea {
     border-color: #fff;
     background: none !important;
-    color: #fff;
+    color: #fff !important; 
     margin: 1rem 0;
     margin-bottom: 1rem !important;
     padding: 1.5rem 1rem;
 }
 
 input[type="text"]::placeholder,
-input[type="password"]::placeholder { 
-    color: #FFF;
+input[type="password"]::placeholder,
+textarea { 
+    color: #FFF !important;
     opacity: 1;
   }
 
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+textarea {
     background: none;
-    color: #fff;
+    color: #fff !important;
 }
 
 .button {

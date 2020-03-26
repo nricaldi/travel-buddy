@@ -9,6 +9,23 @@ body{
 
 }
 
+ul {
+    list-style-position: outside;
+    text-align: left;
+}
+
+.error {
+    background: rgba(0, 0, 0, 0.194);
+    padding: .5rem;
+    margin-left: -35px;
+    list-style-type: none;
+    color: crimson;
+}
+
+i {
+    color: crimson;
+    margin-right: 5px;
+}
 
 .logo{
     position: absolute;
